@@ -2,7 +2,7 @@
     <div class="row justify-content-md-center">
         <div class="col-lg-4">
             <h1 class="text-center my-3">Login</h1>
-            <div class="input-group m-3 shadow">
+            <div class="input-group my-3 shadow">
                 <div class="input-group-prepend">
                     <span class="input-group-text">
                         <fa-icon [icon]="faUser"></fa-icon>
@@ -10,7 +10,7 @@
                 </div>
                 <input type="text" class="form-control" placeholder="Usuario" [(ngModel)]="userLogueado.id" />
             </div>
-            <div class="input-group m-3 shadow">
+            <div class="input-group my-3 shadow">
                 <div class="input-group-prepend">
                     <span class="input-group-text">
                         <fa-icon [icon]="faLock"></fa-icon>
@@ -18,7 +18,7 @@
                 </div>
                 <input type="password"  class="form-control" placeholder="Contraseña" [(ngModel)]="userLogueado.pass"/>
             </div>
-            <div class="text-center m-3">
+            <div class="text-center my-3">
                 <div class="btn-group shadow">
                     <button type="button" class="btn btn-success" (click)="loginUsuario()">Ingresar</button>
                 </div>
