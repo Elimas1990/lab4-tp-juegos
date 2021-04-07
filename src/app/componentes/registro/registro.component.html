@@ -1,1 +1,39 @@
-<p>registro works!</p>
+<div class="row justify-content-md-center">
+    <div class="col-lg-4">
+        <h1 class="text-center my-3">Registro</h1>
+        <div class="input-group my-3 shadow">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <fa-icon [icon]="faUser"></fa-icon>
+                </span>
+            </div>
+            <input type="text" class="form-control" placeholder="Usuario" [(ngModel)]="iduser" />
+        </div>
+        <div class="input-group my-3 shadow">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <fa-icon [icon]="faLock"></fa-icon>
+                </span>
+            </div>
+            <input type="password"  class="form-control" placeholder="Contraseña" [(ngModel)]="pass"/>
+        </div>
+        <div class="input-group my-3 shadow">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <fa-icon [icon]="faLock"></fa-icon>
+                </span>
+            </div>
+            <input type="password"  class="form-control" placeholder="Repetir Contraseña" [(ngModel)]="passr"/>
+        </div>
+        <div class="text-center my-3">
+            <div class="btn-group shadow">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Volver</button>
+                <button type="button" class="btn btn-success" (click)="guardarUsuario()">Generar Usuario</button>
+            </div>
+        </div>
+        <div *ngIf="errorUsuario" class="alert alert-danger box-msg" role="alert">
+            <strong>Error!</strong> Datos no validos volver a intentar
+        </div>
+    </div>
+</div>
+

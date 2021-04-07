@@ -9,6 +9,12 @@ import { QuiensoyComponent } from './componentes/quiensoy/quiensoy.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { ErrorComponent } from './componentes/error/error.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
+import { AuthService } from './servicios/auth.service';
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { environment } from 'src/environments/environment';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -22,9 +28,13 @@ import { NavbarComponent } from './componentes/navbar/navbar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    FontAwesomeModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
