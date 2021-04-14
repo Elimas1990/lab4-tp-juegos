@@ -61,10 +61,7 @@ export class TatetiComponent implements OnInit {
         this.cuadrados[a] === this.cuadrados[b] &&
         this.cuadrados[a] === this.cuadrados[c]){
 
-        this.authService.getCurrentUser().then(user => {
-          //console.log(user.email)
-        }) 
-        console.log(localStorage.getItem('user'))
+       
         this.resultadosService.guardarResultadoPartida(
           {juegador:this.cuadrados[a],
             juego:"TaTeTi",
