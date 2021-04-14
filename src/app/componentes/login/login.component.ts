@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmailValidator } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faUser,faLock } from '@fortawesome/free-solid-svg-icons';
 import { Usuario } from 'src/app/clases/usuario';
@@ -24,8 +25,22 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  loginUsuario(){
-    let buscado= this.users.find(user => {
+  autoCompletarUsuario(){
+    this.userLogueado={id :'a@a.com',pass:'123456'}
+
+  }
+  async loginUsuario(){
+    try{
+      const user= await this.authService.login(this.userLogueado.id,this.userLogueado.pass)
+      this.errorUsuario=false
+      this.route.navigate([''])
+    }
+    catch(error){
+      console.log(error);
+    }
+
+
+    /*let buscado= this.users.find(user => {
       return user.id === this.userLogueado.id
     })
     if(buscado === null || buscado === undefined){
@@ -39,7 +54,7 @@ export class LoginComponent implements OnInit {
       }else{
         this.errorUsuario=true
       }
-    }
+    }*/
   }
 
 }

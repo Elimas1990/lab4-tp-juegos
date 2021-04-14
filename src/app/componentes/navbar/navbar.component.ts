@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
@@ -9,18 +10,24 @@ import { AuthService } from 'src/app/servicios/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  public usuario:any;
+  public user: Observable<any>=this.authService.auth.user;
   constructor(private route:Router,
     public authService:AuthService) { 
-      this.usuario=this.authService.usuario
       
     }
-  linkear(){
-      this.authService.usuario="pepa"
-      this.usuario=this.authService.usuario
-      this.route.navigate(['login'])
+
+  async desloguear(){
+    try{
+      this.authService.logout();
+      this.route.navigate(['login']);
+    }
+    catch(error){
+      console.log(error)
+    }
   }
-  ngOnInit(): void {
+  async ngOnInit() {
+
   }
+
 
 }

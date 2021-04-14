@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faUser,faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope,faLock } from '@fortawesome/free-solid-svg-icons';
 import { Usuario } from 'src/app/clases/usuario';
 import { AuthService } from 'src/app/servicios/auth.service';
 
@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/servicios/auth.service';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
-  faUser = faUser;
+  faEnvelope = faEnvelope;
   faLock = faLock;
   iduser:string;
   pass:string;
@@ -29,8 +29,24 @@ export class RegistroComponent implements OnInit {
   
   ngOnInit(): void {
   }
-  guardarUsuario(){
+  async guardarUsuario(){
+    try{
+      if(this.pass != this.passr){
+        console.log("Contraseñas ingresadas no coinciden")
+        this.errorUsuario=true;
+      }else{
+          this.errorUsuario=false;
+          this.User={id:this.iduser,pass:this.pass}
+          this.authService.register(this.User.id,this.User.pass)
+          this.route.navigate([''])
+      }
+    }
+    catch(error){
+      console.log(error)
+    }
     
+    
+    /*
     if(this.pass != this.passr){
       console.log("Contraseñas ingresadas no coinciden")
       this.errorUsuario=true;
@@ -49,7 +65,7 @@ export class RegistroComponent implements OnInit {
       }else{
         this.errorUsuario=true
       }
-    }
+    }*/
 
   }
 }
