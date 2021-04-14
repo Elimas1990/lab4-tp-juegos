@@ -1,0 +1,14 @@
+main{
+    display: grid;
+    grid-template-columns: 10vw 10vw 10vw;
+    grid-gap: 0px;
+}
+app-cuadrado{
+    height: 10vw;
+}
+.col{
+    max-width: 30vw;
+}
+.btn-reiniciar{
+    min-width:  30vw;
+}

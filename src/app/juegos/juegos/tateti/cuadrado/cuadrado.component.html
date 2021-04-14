@@ -1,1 +1,4 @@
-<button class="btn w-100 h-100">{{value}}</button>
+<button class="btn  w-100 h-100" 
+[ngClass]="{'btn-danger': value == 'X',
+'btn-success': value == 'O',
+'btn-outline-primary': !value }">{{value}}</button>

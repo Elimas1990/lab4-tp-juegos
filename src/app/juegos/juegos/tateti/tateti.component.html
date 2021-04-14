@@ -1,22 +1,22 @@
 <div class="container mt-5">
     <div class="row justify-content-center mb-5">
-        <div class="col ">
-            <h3 class="d-inline mr-5">Mueve jugador: {{player}}</h3> <h3 class="d-inline ml-5" *ngIf="ganador">Ganador: {{ganador}}</h3>
+        <div class="col-lg-4 col-md-4 text-center">
+            <h3 class="d-inline my-5" *ngIf="!ganador"><u>Mueve jugador</u>: {{player}}</h3>
+            <h3 class="d-inline my-5" *ngIf="ganador"><u>Ganador</u>: {{ganador}}</h3>
         </div>
-     
     </div>
     <div class="row justify-content-center">
         <div class="col">
             <main>
-                <app-cuadrados
+                <app-cuadrado
                 *ngFor="let val of cuadrados; let i = index"
                 [value]="val"
-                (click)="hacerMovimiento(i)">
-                </app-cuadrados>
+                (click)="hacerMovimiento(i)">{{val}}
+                </app-cuadrado>
             </main>
         </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-5">
         <div class="col ">
             <button class="btn btn-primary btn-reiniciar" (click)="newGame()">Reiniciar Juego</button>
         </div>

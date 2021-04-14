@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore,AngularFirestoreCollection} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { Juego } from "./../clases/juego";
-
 @Injectable({
   providedIn: 'root'
 })
-export class JuegosService {
+export class ResultadosService {
 
   data:AngularFirestoreCollection<any>;
-  dbpath:string='/juegos';
-  juegos:Observable<Juego[]>;
+  dbpath:string='/resultados';
+  resultados:Observable<any[]>;
 
   constructor(private db: AngularFirestore,) {
     this.data=db.collection<any>(this.dbpath);
-    this.juegos=this.data.valueChanges(this.dbpath);
+    this.resultados=this.data.valueChanges(this.dbpath);
   }
-  getAllGames(){
-    return this.juegos;
+  getAllResults(){
+    return this.resultados;
   }
+  guardarResultadoPartida(resultado:any):any{
+    return this.data.add({...resultado});
 
-
+  }
 }

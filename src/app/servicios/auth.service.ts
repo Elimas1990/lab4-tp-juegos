@@ -24,6 +24,7 @@ export class AuthService {
   async login(email:string,pass:string){
     try{
       const result= await this.auth.signInWithEmailAndPassword(email,pass);
+      localStorage.setItem('user', email);
       return result;
     }
     catch (error){
@@ -46,6 +47,7 @@ export class AuthService {
   async logout(){
     try{
       await this.auth.signOut();
+      localStorage.removeItem('user');
     }
     catch (error){
       console.log(console.error()
