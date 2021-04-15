@@ -1,39 +1,64 @@
-<div class="row justify-content-md-center">
-    <div class="col-lg-4">
-        <h1 class="text-center my-3">Registro</h1>
-        <div class="input-group my-3 shadow">
-            <div class="input-group-prepend">
-                <span class="input-group-text">
-                    <fa-icon [icon]="faEnvelope"></fa-icon>
-                </span>
+<form name="form" [formGroup]="registerForm" (ngSubmit)="registerForm.valid">
+    <div class="row justify-content-md-center">
+        <div class="col-lg-4">
+            <h1 class="text-center my-3">Registro</h1>
+            <div class="input-group my-3 ">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <fa-icon [icon]="faEnvelope"></fa-icon>
+                    </span>
+                </div>
+                <input type="email" class="form-control" placeholder="Email" [(ngModel)]="iduser" 
+                formControlName="email" 
+                [ngClass]="{'is-invalid':registerForm.get('email').touched && registerForm.get('email').invalid}" />
+                <div class="invalid-feedback" *ngIf="registerForm.get('email').errors?.required">
+                    El email es requerido
+                </div>
+                <div class="invalid-feedback" *ngIf="registerForm.get('email').errors?.email">
+                    El email debe ser valido
+                </div>
             </div>
-            <input type="email" class="form-control" placeholder="Email" [(ngModel)]="iduser" />
-        </div>
-        <div class="input-group my-3 shadow">
-            <div class="input-group-prepend">
-                <span class="input-group-text">
-                    <fa-icon [icon]="faLock"></fa-icon>
-                </span>
+            <div class="input-group my-3 ">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <fa-icon [icon]="faLock"></fa-icon>
+                    </span>
+                </div>
+                <input type="password"  class="form-control" placeholder="Contraseña" [(ngModel)]="pass"
+                formControlName="passUno"
+                [ngClass]="{'is-invalid':registerForm.get('passUno').touched && registerForm.get('passUno').invalid}" />
+                <div class="invalid-feedback" *ngIf="registerForm.get('passUno').errors?.required">
+                    Ingrese una password
+                </div>
+                <div class="invalid-feedback" *ngIf="registerForm.get('passUno').errors?.minlength">
+                    La password debe tener minimo 6 caracteres
+                </div>
             </div>
-            <input type="password"  class="form-control" placeholder="Contraseña" [(ngModel)]="pass"/>
-        </div>
-        <div class="input-group my-3 shadow">
-            <div class="input-group-prepend">
-                <span class="input-group-text">
-                    <fa-icon [icon]="faLock"></fa-icon>
-                </span>
+            <div class="input-group my-3 ">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <fa-icon [icon]="faLock"></fa-icon>
+                    </span>
+                </div>
+                <input type="password"  class="form-control" placeholder="Repetir Contraseña" [(ngModel)]="passr"
+                formControlName="passDos" 
+                [ngClass]="{'is-invalid':registerForm.get('passDos').touched && registerForm.get('passDos').invalid}" />
+                <div class="invalid-feedback" *ngIf="registerForm.get('passDos').errors?.required">
+                    Ingrese una password
+                </div>
+                <div class="invalid-feedback" *ngIf="registerForm.get('passDos').errors?.minlength">
+                    La password debe tener minimo 6 caracteres
+                </div>
             </div>
-            <input type="password"  class="form-control" placeholder="Repetir Contraseña" [(ngModel)]="passr"/>
-        </div>
-        <div class="text-center my-3">
-            <div class="btn-group shadow">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Volver</button>
-                <button type="button" class="btn btn-success" (click)="guardarUsuario()">Generar Usuario</button>
+            <div class="text-center my-3">
+                <div class="btn-group shadow">
+                    <button type="button" class="btn btn-danger" >Volver</button>
+                    <button type="button" class="btn btn-success"  type="submit" (click)="guardarUsuario()" [disabled]="!registerForm.valid">Generar Usuario</button>
+                </div>
             </div>
-        </div>
-        <div *ngIf="errorUsuario" class="alert alert-danger box-msg" role="alert">
-            <strong>Error!</strong> Datos no validos volver a intentar
+            <div *ngIf="errorUsuario" class="alert alert-danger box-msg" role="alert">
+                <strong>Error!</strong> Datos no validos volver a intentar
+            </div>
         </div>
     </div>
-</div>
-
+</form>

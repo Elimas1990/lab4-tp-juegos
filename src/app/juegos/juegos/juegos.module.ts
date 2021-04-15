@@ -8,6 +8,7 @@ import { PptComponent } from './ppt/ppt.component';
 import { CuadradoComponent } from './tateti/cuadrado/cuadrado.component';
 
 
+
 @NgModule({
   declarations: [
     JuegosComponent, 
@@ -17,6 +18,7 @@ import { CuadradoComponent } from './tateti/cuadrado/cuadrado.component';
   imports: [
     CommonModule,
     JuegosRoutingModule
+    
   ]
 })
 export class JuegosModule { }

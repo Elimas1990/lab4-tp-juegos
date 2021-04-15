@@ -24,11 +24,13 @@ export class PptComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   resetJuego(){
     this.pptMaquina=null;
     this.pptPlayer=null;
     this.resultado=null;
   }
+
   seleccionarOpcion(){
     this.pptMaquina=this.ppt[Math.floor(Math.random() * this.ppt.length)];
     this.calcularGanador();
@@ -44,7 +46,7 @@ export class PptComponent implements OnInit {
         this.resetJuego();
       }
       
-      }, 900);
+    }, 900);
     
   }
 

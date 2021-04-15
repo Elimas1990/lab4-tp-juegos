@@ -10,12 +10,13 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { ErrorComponent } from './componentes/error/error.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { AuthService } from './servicios/auth.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { environment } from 'src/environments/environment';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { ChatComponent } from './componentes/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     QuiensoyComponent,
     RegistroComponent,
     ErrorComponent,
-    NavbarComponent
+    NavbarComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     FontAwesomeModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

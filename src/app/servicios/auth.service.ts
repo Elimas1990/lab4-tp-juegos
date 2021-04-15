@@ -28,8 +28,7 @@ export class AuthService {
       return result;
     }
     catch (error){
-      console.log(console.error()
-      )
+      console.log(console.error())
     }
 
   }
@@ -50,8 +49,7 @@ export class AuthService {
       localStorage.removeItem('user');
     }
     catch (error){
-      console.log(console.error()
-      )
+      console.log(console.error())
     }
     
   }

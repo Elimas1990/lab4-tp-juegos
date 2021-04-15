@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Juego } from 'src/app/clases/juego';
+import { faPlayCircle} from '@fortawesome/free-solid-svg-icons';
 import { JuegosService } from 'src/app/servicios/juegos.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { JuegosService } from 'src/app/servicios/juegos.service';
 })
 export class JuegosComponent implements OnInit {
   listajuegos:any
+  faPlayCircle=faPlayCircle
   constructor(private juegosService:JuegosService) {
     this.juegosService.getAllGames().subscribe(juegos => {
       this.listajuegos=juegos

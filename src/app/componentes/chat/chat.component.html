@@ -1,0 +1,30 @@
+<div class="chatitems" *ngIf="usuarioInteractura">
+    <div class="card shadow-lg " style="width: 20rem" *ngIf="chatActivo">
+        <div class="card-header">
+            Chat general
+            <button type="button" class="close" (click)="chatActivo = false">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="card-body overflow-auto" style="height: 250px;" #scrollMe  [scrollTop]="scrollMe.scrollHeight">
+            <div *ngFor="let mensaje of chat">
+                <div class="card-text border my-1" 
+                [ngClass]="{'border-info rounded-left ml-3 px-3 bg-info': mensaje.usuario == usuarioInteractura,
+                'border-warning rounded-right mr-3 px-2 bg-warning': mensaje.usuario != usuarioInteractura}">{{mensaje.comentario}}
+                    <p class="time-text text-right mb-0" >{{mensaje.usuario}} <span class="time-text">{{mensaje.hora.toMillis() | date:'dd/MM/yyyy h:mm:ss a'}}</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="input-group">
+                <input type="text" class="form-control" (keyup.enter)="enviarMensaje()" placeholder="Escriba su mensaje..." [(ngModel)]="mensajeGuardar.comentario">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-info" type="button" (click)="enviarMensaje()">Enviar</button>
+                </div>
+              </div>
+        </div>
+    </div>
+    <button class="btn btn-secondary rounded border-primary shadow-lg " *ngIf="!chatActivo" (click)="chatActivo = true">
+        <fa-icon [icon]="faComment" ></fa-icon>
+    </button>
+</div>

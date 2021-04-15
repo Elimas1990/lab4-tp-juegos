@@ -1,0 +1,12 @@
+p.time-text{
+    font-size: small;
+}
+span.time-text{
+    font-size: x-small;
+}
+
+.chatitems{
+    right: 20px;
+    bottom: 20px; 
+    position: absolute;
+}

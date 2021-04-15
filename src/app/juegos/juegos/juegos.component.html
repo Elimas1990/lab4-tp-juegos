@@ -7,17 +7,16 @@
             <img class="bd-placeholder-img card-img-top" height="250" src="assets/img/{{juego.imagen}}" alt="">
 
             <div class="card-body">
-                <p class="card-text"><u>{{juego.nombre}}</u></p>
+                <h5 class="card-title">{{juego.nombre}}</h5>
                 <p class="card-text">Descripcion: {{juego.descripcion}}</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-info" routerLink='/juegos/{{juego.link}}' >Play</button>
+                        <button type="button" class="btn btn-sm btn-outline-info" routerLink='/juegos/{{juego.link}}' >Play <fa-icon [icon]="faPlayCircle" ></fa-icon></button>
                         <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
                     </div>
                     <small class="text-muted">mins</small>
                 </div>
             </div>
         </div>
-        </div>
-        
+    </div>
 </div>

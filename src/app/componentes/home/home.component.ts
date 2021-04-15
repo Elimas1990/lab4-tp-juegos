@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/servicios/auth.service';
+import { Mensajechat } from 'src/app/clases/mensajechat';
+import { ChatService } from 'src/app/servicios/chat.service';
+import { map } from "rxjs/operators";
 
 @Component({
   selector: 'app-home',
@@ -7,17 +9,16 @@ import { AuthService } from 'src/app/servicios/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  title:string="Sala de Juegos";
-  mensaje:any;
-
-  constructor(private authService:AuthService) { }
-
+  title="Sala de Juegos"
+  
+  
+  constructor() {
+   
+    
+  }
+  
   ngOnInit(): void {
   }
 
-  enviarMensaje(){
-    console.log("entro a enviarmensaje")
-    this.authService.create(this.mensaje)
-  }
 
 }
