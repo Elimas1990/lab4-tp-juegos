@@ -37,8 +37,9 @@ import { ChatComponent } from './componentes/chat/chat.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
+
   providers: [AuthService],
   bootstrap: [AppComponent]
 })
