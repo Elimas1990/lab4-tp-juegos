@@ -1,24 +1,25 @@
-<div class="row mt-5">
-    <div class="col d-flex justify-content-center">
-        <h2><u>Memotest</u></h2>
+<div class="container-fluid">
+    <div class="row mt-5">
+        <div class="col d-flex justify-content-center">
+            <h1><u>Memotest</u></h1>
+        </div>
     </div>
-</div>
-<div class="row mt-5">
-    <div class="col d-flex justify-content-center">
-        <h5>Volteos</h5>
+    <div class="row my-5" *ngIf="!restartBtn" >
+        <div class="col d-flex justify-content-center">
+            <h2>Volteos: {{volteos}}</h2>
+        </div>
     </div>
-    <div class="col d-flex justify-content-center">
-        <h5>Tiempo</h5>
+    
+    <div class="row my-5" *ngIf="restartBtn" style="height: 500px;">
+        <div class="col d-flex justify-content-center " >
+            <button class="btn btn-outline-danger align-middle" (click)="restart()"><h1>Volver a Jugar</h1></button>
+        </div>
+    </div>
+    
+    <div class="p-16">
+        <div class="grid p-16">        
+          <app-carta *ngFor="let c of cards; let idx=index" [data]="c" (cardClicked)="cardClicked(idx)"></app-carta>
+        </div>
     </div>
 </div>
 
-<div class="p-16">
-    <p class="text-center">Tap on a card to flip it. You can only flip a maximum of two cards at a time. A match will
-      remove
-      those cards!</p>
-    <div class="grid p-16">
-        <!--<app-carta *ngFor="let c of cards; let idx=index" [data]="c" (cartaSeleccionada)="cartaSeleccionada($event,idx)"></app-carta>-->
-        
-      <app-carta *ngFor="let c of cards; let idx=index" [data]="c" (cardClicked)="cardClicked(idx)"></app-carta>
-    </div>
-  </div>

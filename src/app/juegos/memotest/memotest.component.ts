@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 import { Carta } from 'src/app/clases/carta';
 import { JuegosService } from 'src/app/servicios/juegos.service';
-import { RestartComponent } from './restart/restart.component';
-import { map,filter } from "rxjs/operators";
+import { ResultadosService } from 'src/app/servicios/resultados.service';
 
 @Component({
   selector: 'app-memotest',
@@ -17,31 +17,30 @@ export class MemotestComponent implements OnInit {
 
   fondos:any=[]
 
-  /*cardImages = ['https://image.tmdb.org/t/p/w500/tsqcwBp1jYZdcceXXoVEby0dZkt.jpg',
-  'https://image.tmdb.org/t/p/w500/279yOM4OQREL36B3SECnRxoB4MZ.jpg',
-  'https://image.tmdb.org/t/p/w500/9kg73Mg8WJKlB9Y2SAJzeDKAnuB.jpg',
-  'https://image.tmdb.org/t/p/w500/lPsD10PP4rgUGiGR4CCXA6iY0QQ.jpg',
-  'https://image.tmdb.org/t/p/w500/4VlXER3FImHeFuUjBShFamhIp9M.jpg'
-  ];*/
   cardImages:any[]=[]
   cards: Carta[] = [];
   flippedCards:Carta[]=[];
-  matchedCount:number;
+  matchedCount:number=0;
   dialog:any;
+  volteos=0;
+  cantidadCartas:number=5;
+  restartBtn:boolean=false;
 
 
-  constructor(private apiPeli:JuegosService) { 
+  constructor(private apiPeli:JuegosService,
+    private resultadosService:ResultadosService) { 
     apiPeli.obtenerPeliculas()
     .subscribe(peli=> {
       this.fondos=peli["results"]
+      let indexCartas=0
       this.fondos.forEach(element => {
-        this.cardImages.push('https://image.tmdb.org/t/p/w500'+element["poster_path"])
-
+        if(indexCartas < this.cantidadCartas){
+          this.cardImages.push('https://image.tmdb.org/t/p/w500'+element["poster_path"])
+        }
+        indexCartas++
       });
       this.setupCards();
-    })
-    console.log(this.cardImages)
-    
+    })    
   }
 
   ngOnInit(): void {
@@ -50,21 +49,20 @@ export class MemotestComponent implements OnInit {
   
 
   cardClicked(index: number): void {
-    const cardInfo = this.cards[index];
 
-    if (cardInfo.state === 'default' && this.flippedCards.length < 2)      
-    {
+    const cardInfo = this.cards[index];
+    this.volteos++;
+
+    if (cardInfo.state === 'default' && this.flippedCards.length < 2){
       cardInfo.state = 'flipped';
       this.flippedCards.push(cardInfo);
 
       if (this.flippedCards.length === 2) {
         this.checkForCardMatch();
-     }
-
-    } else if (cardInfo.state === 'flipped') {
+      }
+    }else if (cardInfo.state === 'flipped') {
       cardInfo.state = 'default';
       this.flippedCards.pop();
-
     }
   }
 
@@ -74,20 +72,21 @@ export class MemotestComponent implements OnInit {
       const cardTwo = this.flippedCards[1];
       const nextState = cardOne.imageId === cardTwo.imageId ? 'matched' : 'default';
       cardOne.state = cardTwo.state = nextState;
-
+      
       this.flippedCards = [];
 
       if (nextState === 'matched') {
         this.matchedCount++;
-
-        if (this.matchedCount === this.cardImages.length) {
-          const dialogRef = this.dialog.open(RestartComponent, {
-            disableClose: true
-          });
-
-          dialogRef.afterClosed().subscribe(() => {
-            this.restart();
-          });
+        console.log(this.matchedCount)
+        if (this.matchedCount === this.cantidadCartas) {
+          this.restartBtn=true
+          let resultado={
+            usuario:localStorage.getItem('user'),
+            fecha: new Date,
+            juego:'Memotest',
+            volteos:this.volteos
+          }
+          this.resultadosService.guardarResultadoPartida(resultado)
         }
       }
 
@@ -96,6 +95,8 @@ export class MemotestComponent implements OnInit {
 
   restart(): void {
     this.matchedCount = 0;
+    this.volteos = 0;
+    this.restartBtn=false
     this.setupCards();
 }
 

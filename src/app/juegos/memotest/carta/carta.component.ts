@@ -14,8 +14,14 @@ import { Carta } from 'src/app/clases/carta';
       state('flipped', style({
         transform: 'rotateY(180deg)'
       })),
+      state('matched', style({
+        display:'none'
+      })),
       transition('default => flipped', [
         animate('400ms')
+      ]),
+      transition('flipped => matched', [
+        animate('400ms',style({transform: 'scale(-1)'}))
       ]),
       transition('flipped => default', [
         animate('200ms')

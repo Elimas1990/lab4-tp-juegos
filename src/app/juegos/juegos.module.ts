@@ -11,7 +11,6 @@ import { PptComponent } from './ppt/ppt.component';
 import { JuegosComponent } from './juegos.component';
 import { MemotestComponent } from './memotest/memotest.component';
 import { CartaComponent } from './memotest/carta/carta.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RestartComponent } from './memotest/restart/restart.component';
 
 

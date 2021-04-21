@@ -63,7 +63,7 @@ export class TatetiComponent implements OnInit {
 
        
         this.resultadosService.guardarResultadoPartida(
-          {juegador:this.cuadrados[a],
+          {jugador:this.cuadrados[a],
             juego:"TaTeTi",
             usuario:localStorage.getItem('user'),
             fecha: new Date()
