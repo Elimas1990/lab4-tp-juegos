@@ -16,7 +16,9 @@ import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { environment } from 'src/environments/environment';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { ChatComponent } from './componentes/chat/chat.component';
+import { GeneralModule } from './general/general.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,7 @@ import { ChatComponent } from './componentes/chat/chat.component';
     QuiensoyComponent,
     RegistroComponent,
     ErrorComponent,
-    NavbarComponent,
-    ChatComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +39,9 @@ import { ChatComponent } from './componentes/chat/chat.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     ReactiveFormsModule,
+    GeneralModule,
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
 
   providers: [AuthService],

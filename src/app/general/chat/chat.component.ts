@@ -32,10 +32,8 @@ export class ChatComponent implements OnInit {
 
   enviarMensaje(){
 
-
     this.mensajeGuardar.hora= new Date
     this.mensajeGuardar.usuario=localStorage.getItem('user')
-
     this.chatService.guardarMensaje(this.mensajeGuardar )
     this.mensajeGuardar.comentario=null
   }

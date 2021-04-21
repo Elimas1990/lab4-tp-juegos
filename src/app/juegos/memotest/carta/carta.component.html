@@ -1,0 +1,9 @@
+<div class="card" (click)="cardClicked.emit()"  [@cardFlip]="data.state"    >
+    <div class="face back" >
+        
+        <img src="./../../../../assets/img/papel.jpg" alt="" class="w-100 h-100">
+    </div>
+    <div class="face front" >
+        <img src="{{data.imageId}}" alt="" class="w-100 h-100">
+    </div>
+</div>

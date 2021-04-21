@@ -32,8 +32,12 @@ export class LoginComponent implements OnInit {
   async loginUsuario(){
     try{
       const user= await this.authService.login(this.userLogueado.id,this.userLogueado.pass)
+     if(user){
       this.errorUsuario=false
       this.route.navigate([''])
+     }else{
+      this.errorUsuario=true
+     }
     }
     catch(error){
       console.log(error);
