@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 import { Carta } from 'src/app/clases/carta';
 import { JuegosService } from 'src/app/servicios/juegos.service';
 import { ResultadosService } from 'src/app/servicios/resultados.service';

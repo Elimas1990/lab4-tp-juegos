@@ -11,8 +11,8 @@ import { PptComponent } from './ppt/ppt.component';
 import { JuegosComponent } from './juegos.component';
 import { MemotestComponent } from './memotest/memotest.component';
 import { CartaComponent } from './memotest/carta/carta.component';
-import { RestartComponent } from './memotest/restart/restart.component';
-
+import { DinoComponent } from './dino/dino.component';
+import { AdivinapaisComponent } from './adivinapais/adivinapais.component';
 
 
 @NgModule({
@@ -21,7 +21,9 @@ import { RestartComponent } from './memotest/restart/restart.component';
     TatetiComponent, 
     PptComponent, 
     CuadradoComponent, 
-    MemotestComponent, CartaComponent, RestartComponent],
+    MemotestComponent, 
+    CartaComponent, 
+    DinoComponent, AdivinapaisComponent],
   imports: [
     CommonModule,
     JuegosRoutingModule,

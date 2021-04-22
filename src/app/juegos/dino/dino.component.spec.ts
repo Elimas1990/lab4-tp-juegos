@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RestartComponent } from './restart.component';
+import { DinoComponent } from './dino.component';
 
-describe('RestartComponent', () => {
-  let component: RestartComponent;
-  let fixture: ComponentFixture<RestartComponent>;
+describe('DinoComponent', () => {
+  let component: DinoComponent;
+  let fixture: ComponentFixture<DinoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RestartComponent ]
+      declarations: [ DinoComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RestartComponent);
+    fixture = TestBed.createComponent(DinoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
