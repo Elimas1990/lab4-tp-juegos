@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
   urlPeliculas:'https://api.themoviedb.org/3/movie/popular?api_key=9492e879ef9dc9a7f1b5926cc00a7aa2',
+  urlPaises:'https://restcountries.eu/rest/v2/all',
   firebase:{
     apiKey: "AIzaSyDXGIDS7To0FdPGGVHe9I1QmzuaFexLQ28",
     authDomain: "tp-saladejuegos-98240.firebaseapp.com",

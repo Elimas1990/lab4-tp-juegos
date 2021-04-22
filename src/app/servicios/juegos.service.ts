@@ -11,12 +11,14 @@ import { Juego } from "./../clases/juego";
 export class JuegosService {
 
   urlPeliculas=environment.urlPeliculas
+  urlPaises=environment.urlPaises
   data:AngularFirestoreCollection<any>;
   dbpath:string='/juegos';
   juegos:Observable<Juego[]>;
 
   constructor(private db: AngularFirestore,
-    private apiPeli:HttpClient) {
+    private apiPeli:HttpClient,
+    private apiPaises:HttpClient) {
     this.data=db.collection<any>(this.dbpath);
     this.juegos=this.data.valueChanges(this.dbpath);
   }
@@ -26,6 +28,9 @@ export class JuegosService {
 
   public obtenerPeliculas(){
     return this.apiPeli.get(this.urlPeliculas);
+  }
+  public obtenerPaises(){
+    return this.apiPaises.get(this.urlPaises);
   }
 
 
