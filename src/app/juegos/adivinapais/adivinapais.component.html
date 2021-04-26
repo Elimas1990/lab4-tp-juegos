@@ -7,8 +7,8 @@
     <div class="row my-5">
         <div class="col d-flex justify-content-center">
             
-            <button class="btn btn-outline-danger" (click)="empezarGame()">Empezar</button>
-            <h4>Puntos: {{puntosGanados}}</h4>
+            <button class="btn btn-outline-danger " style="font-size: 36px;height: 100px;" (click)="empezarGame()" *ngIf="!comienzaGame">Empezar Juego</button>
+            <h2 *ngIf="comienzaGame">Puntos acumulados: {{puntosGanados}}</h2>
         </div>
     </div>
     <div class="row my-5">
@@ -17,12 +17,23 @@
             <img src="{{banderaRandom}}" class="rounded mx-auto d-block border border-primary" alt="...">
         </div>
     </div>
-    <div class="row my-5">
+    <div class="row my-5" *ngIf="!mensaje">
         <div class="col d-flex justify-content-center" *ngFor="let nombre of opciones;">
-            <div class="custom-control custom-radio">
+            <div class="custom-control custom-radio h4 " >
                 <input type="radio" id="custom{{nombre}}" name="radioPais" class="custom-control-input" value="{{nombre}}" (click)="validarPais(nombre)">
-                <label class="custom-control-label" for="custom{{nombre}}">{{nombre}}</label>
-              </div>
+                <label class="custom-control-label opcionesBandera" for="custom{{nombre}}">{{nombre}}</label>
+            </div>
+        </div>
+    </div>
+    <div class="row " *ngIf="mensaje">
+        <div class="col-sm-6 mx-auto text-center" *ngIf="!correcion">
+            <h1 class="text-danger"><p>INCORRECTO!</p></h1>
+            <h2 class="text-info">Llegaste a acumular {{ultimoPuntaje}} puntos</h2>
+        </div>
+    </div>
+    <div class="row " *ngIf="mensaje">
+        <div class="col-sm-6 mx-auto text-center" *ngIf="correcion">
+            <h1 class="text-success">CORRECTO! la bandera es de <u>{{nombreBanderaRandom}}</u></h1>
         </div>
     </div>
 
