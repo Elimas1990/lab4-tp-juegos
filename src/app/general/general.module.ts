@@ -5,6 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EncuestaComponent } from './encuesta/encuesta.component';
 import { ResultadosComponent } from './resultados/resultados.component';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -15,7 +16,8 @@ import { ResultadosComponent } from './resultados/resultados.component';
     CommonModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTablesModule
   ],
   exports:[ChatComponent],
   providers:[]

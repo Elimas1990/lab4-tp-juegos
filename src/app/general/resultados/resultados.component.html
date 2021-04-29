@@ -3,19 +3,19 @@
         <div class="col-lg-10">
             <h1 class="text-center my-3">Resultados</h1>
             <div class="contenedor-tabla table-responsive">
-                <table class="table border border-primary">
+                <table *ngIf="render" class="table border border-primary" datatable [dtOptions]="dtOptions" id="tabla-resultados">
                     <thead class="thead-dark">
                         <tr >
-                            <th>Fecha</th>
                             <th>Juego</th>
+                            <th>Fecha</th>
                             <th>Usuario</th>
                             <th>Resultados</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let resultado of listaResultados">
-                            <td>{{resultado.fecha.toDate() | date:'dd/MM/yyyy h:mm:ss a'}}</td>
                             <td>{{resultado.juego}}</td>
+                            <td>{{resultado.fecha.toDate() | date:'dd/MM/yyyy h:mm:ss a'}}</td>
                             <td>{{resultado.usuario}}</td>
     
                             <td *ngIf="resultado.puntos">{{resultado.puntos}}</td>

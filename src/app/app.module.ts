@@ -19,6 +19,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { GeneralModule } from './general/general.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     GeneralModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    DataTablesModule
   ],
 
   providers: [AuthService],
