@@ -19,9 +19,11 @@
                             <td>{{resultado.usuario}}</td>
     
                             <td *ngIf="resultado.puntos">{{resultado.puntos}}</td>
+                            <td *ngIf="resultado.puntos == 0">0</td>
                             <td *ngIf="resultado.jugador">{{resultado.jugador}}</td>
                             <td *ngIf="resultado.resultado">{{resultado.resultado}}</td>
                             <td *ngIf="resultado.volteos">{{resultado.volteos}}</td>
+                            
                         </tr>
                     </tbody>
                 </table>

@@ -15,6 +15,7 @@ export class EncuestaComponent implements OnInit {
 
   errorUsuario=false;
   listaJuegos:any[]=[]
+  seEnvioFormulario=false;
 
 
   formEncuesta:FormGroup= new FormGroup({
@@ -39,27 +40,16 @@ export class EncuestaComponent implements OnInit {
 
   guardarEncuesta(){
     const encuesta=this.formEncuesta.getRawValue()
-    encuesta.usuario=localStorage.getItem('user')
-    this.encuestaService.guardarEncuesta(encuesta)
-    this.formEncuesta.reset()
-    /*try{
-      if(this.pass != this.passr){
-        console.log("Contraseñas ingresadas no coinciden")
-        this.errorUsuario=true;
-      }else{
-          this.User={
-            id:this.registerForm.value.email,
-            pass:this.registerForm.value.passUno
-          }
-          this.errorUsuario=false;
-          this.authService.register(this.User.id,this.User.pass)
-          localStorage.setItem('user',this.User.id)
-          this.route.navigate([''])
-      }
+    if(this.formEncuesta.valid){
+      encuesta.usuario=localStorage.getItem('user')
+      this.encuestaService.guardarEncuesta(encuesta)
+      this.formEncuesta.reset()
+      this.seEnvioFormulario=true
+    }else{
+      this.seEnvioFormulario=false
     }
-    catch(error){
-      console.log(error)
-    }*/
+
+
 
   }
 }

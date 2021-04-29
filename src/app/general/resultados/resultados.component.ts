@@ -19,6 +19,7 @@ export class ResultadosComponent implements OnInit {
   constructor(private resultadosService:ResultadosService) {
     resultadosService.getAllResults().subscribe(resultados => {
       this.listaResultados=resultados
+      console.log(this.listaResultados)
       this.render=true
     })
   }
