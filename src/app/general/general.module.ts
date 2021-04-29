@@ -4,12 +4,13 @@ import { ChatComponent } from './chat/chat.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EncuestaComponent } from './encuesta/encuesta.component';
+import { ResultadosComponent } from './resultados/resultados.component';
 
 
 
 
 @NgModule({
-  declarations: [ChatComponent, EncuestaComponent],
+  declarations: [ChatComponent, EncuestaComponent, ResultadosComponent],
   imports: [
     CommonModule,
     FontAwesomeModule,

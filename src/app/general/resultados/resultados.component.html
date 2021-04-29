@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-lg-10">
+            <h1 class="text-center my-3">Resultados</h1>
+            <div class="contenedor-tabla table-responsive">
+                <table class="table border border-primary">
+                    <thead class="thead-dark">
+                        <tr >
+                            <th>Fecha</th>
+                            <th>Juego</th>
+                            <th>Usuario</th>
+                            <th>Resultados</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let resultado of listaResultados">
+                            <td>{{resultado.fecha.toDate() | date:'dd/MM/yyyy h:mm:ss a'}}</td>
+                            <td>{{resultado.juego}}</td>
+                            <td>{{resultado.usuario}}</td>
+    
+                            <td *ngIf="resultado.puntos">{{resultado.puntos}}</td>
+                            <td *ngIf="resultado.jugador">{{resultado.jugador}}</td>
+                            <td *ngIf="resultado.resultado">{{resultado.resultado}}</td>
+                            <td *ngIf="resultado.volteos">{{resultado.volteos}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</div>
